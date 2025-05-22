@@ -1,0 +1,45 @@
+Using namespace to avoid name collission during linking when same symbol name is present in different libs.
+Using visibility=hidden attribute to hide symbol visibility outside the compilation unit.
+
+Controlling Symbol Visibility in C++
+In C++, you can control symbol visibility using compiler flags or visibility attributes:
+  Compiler Flag -fvisibility=hidden:
+This sets the default visibility of all symbols to "hidden" unless explicitly marked as "default" (exported).
+Attributes:
+  Symbols can be explicitly marked as visible (exported) or hidden using attributes like:
+  __attribute__((visibility("default"))) (GCC/Clang).
+  __declspec(dllexport) / __declspec(dllimport) (Windows).
+
+Benefits of Using -fvisibility=hidden
+Reduced risk of unintended API exposure.
+Lower binary size.
+Faster loading and runtime linking.
+Better maintainability and modular design.
+
+Compile c++:
+g++ -fPIC -shared -o libexample.so library.cpp -fvisibility=hidden
+// Compile and create a shared library:
+// g++ -fPIC -shared -o libexample.so library.cpp
+// Using `nm` to inspect symbols in the shared library:
+nm -D libexample.so
+
+The -fPIC flag in g++ (GNU C++ Compiler) stands for Position-Independent Code. It is used when compiling source code to generate machine code that can run at any memory address. This is particularly important when building shared libraries.
+
+When to Use -fPIC?
+  Shared Libraries:
+    Shared libraries (e.g., .so files on Linux) must be position-independent because they can be loaded at different memory addresses in different processes.
+    The -fPIC flag ensures that the code does not have absolute addresses, making it relocatable.
+  Dynamic Linking:
+    When a shared library is dynamically loaded into a program, it might not always load at the same memory address.
+    Position-independent code allows the operating system to adjust addresses at runtime without requiring the library to be recompiled.
+    Address Space Layout Randomization (ASLR):
+  Modern operating systems often randomize the address space for security purposes. Position-independent code works well with ASLR.
+
+Key Points
+  -fPIC and Performance:
+    Position-independent code is slightly less efficient than regular code because it uses relative addressing (e.g., via the Global Offset Table, or GOT).
+    The performance overhead is usually negligible compared to the benefits of flexibility and compatibility.
+  Static Libraries:
+    Static libraries (e.g., .a files) do not require -fPIC because they are linked into a single executable at a fixed address.
+  Required by Modern Toolchains:
+    Many modern toolchains (e.g., gcc -shared) automatically enforce -fPIC for shared libraries, but its a good practice to include it explicitly.
