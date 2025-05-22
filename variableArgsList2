@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdarg.h>
+
+int funTest(char *buffer, size_t size, const char *format, va_list args) {
+  //if(args)
+    vsnprintf(buffer, size, format, args);
+  //else
+  //  snprintf(buffer, size, format);
+  return 0;
+}
+
+void format_message(char *buffer, size_t size, int use_varargs, const char *format, ...) {
+    va_list args;
+
+    // If `use_varargs` is true, we expect a va_list and use `vsnprintf`.
+    if (use_varargs) {
+        // Start extracting the variable arguments
+        va_start(args, format);
+        
+        // Use `vsnprintf` to format the string with the va_list
+        //vsnprintf(buffer, size, format, args);
+        funTest(buffer, size, format,args);
+        // End the va_list handling
+        va_end(args);
+    } else {
+        // If not using varargs, assume we are calling this function directly with fixed arguments
+        // This time we just call `snprintf` directly
+        //snprintf(buffer, size, format, "Alice", 10);  // Example of fixed arguments
+        
+        funTest(buffer, size, format);
+        //funTest(buffer, size, format, args);
+
+    }
+}
+
+int main() {
+    char buffer[256];
+
+    // Example using regular `snprintf`
+    //format_message(buffer, sizeof(buffer), 0, "Hello, %s! You have %d new messages.");
+    format_message(buffer, sizeof(buffer), 0, "Hello, Alive! You have 10 new messages.");
+    printf("Fixed arguments: %s\n", buffer);
+
+    // Example using `vsnprintf` with variable arguments
+    format_message(buffer, sizeof(buffer), 1, "Hello, %s! You have %d new messages.", "Bob", 20);
+    printf("Variable arguments: %s\n", buffer);
+
+    return 0;
+}
