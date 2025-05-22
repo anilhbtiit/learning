@@ -1,0 +1,36 @@
+
+For mutex & prod-cons programs using pthread:
+g++ -g -o mutex.o mutex.cc -lrt -pthread
+g++ -g -o producer_cons.o producer_cons.cc  -lrt -pthread
+
+For Semaphores:
+g++ -g -std=c++20 -o semaphore.o semaphore.cc -lrt -pthread
+
+For other programs:
+g++ -g -o fork.o fork.cc
+
+Debugging a child process created by fork() in GDB requires a few steps to ensure that you can attach to and debug the child process.
+Put a breakpoint just before fork() for child process.
+(gdb) set follow-fork-mode child     //GDB will follow the child process after fork()
+(gdb) continue
+(gdb) break server
+(gdb) continue
+
+If you want to debug both processes (parent and child), you can open another instance of GDB and attach it to the child process.
+When fork() is called, the child process is created, and its PID is returned. Print the PID in the program.
+In another terminal, attach GDB to the child process using its PID: 
+gdb ./tcp_socket_example <child_pid>  //child_pid can be picked from top command use: ps -ef | pgrep -f tcp_socket
+(gdb) break server
+
+Get all process ids for a program: say for tcp_socket.o
+ps -ef | pgrep -f tcp_socket
+Kill all running processes for a command:
+ps -ef | pkill -f command
+
+
+Using fork() Breakpoint => BEST way to do it
+(gdb) break fork
+(gdb) info fork   //when breakpoint hits
+(gdb) set follow-fork-mode child
+(gdb) server
+(gdb) continue
