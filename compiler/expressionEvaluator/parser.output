@@ -1,0 +1,273 @@
+Terminals unused in grammar
+
+   UNKNOWN_TOKEN
+
+
+State 15 conflicts: 4 shift/reduce
+State 16 conflicts: 4 shift/reduce
+State 17 conflicts: 4 shift/reduce
+State 18 conflicts: 4 shift/reduce
+
+
+Grammar
+
+    0 $accept: problem $end
+
+    1 problem: assignment_list expr
+
+    2 assignment_list: assignment_list assignment
+    3                | %empty
+
+    4 assignment: IDENT ASSIGN NUM
+
+    5 expr: NUM
+    6     | IDENT
+    7     | expr ADD expr
+    8     | expr SUB expr
+    9     | expr MUL expr
+   10     | expr DIV expr
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+IDENT (258) 4 6
+NUM (259) 4 5
+ASSIGN (260) 4
+ADD (261) 7
+SUB (262) 8
+MUL (263) 9
+DIV (264) 10
+UNKNOWN_TOKEN (265)
+
+
+Nonterminals, with rules where they appear
+
+$accept (11)
+    on left: 0
+problem (12)
+    on left: 1, on right: 0
+assignment_list (13)
+    on left: 2 3, on right: 1 2
+assignment (14)
+    on left: 4, on right: 2
+expr (15)
+    on left: 5 6 7 8 9 10, on right: 1 7 8 9 10
+
+
+State 0
+
+    0 $accept: . problem $end
+
+    $default  reduce using rule 3 (assignment_list)
+
+    problem          go to state 1
+    assignment_list  go to state 2
+
+
+State 1
+
+    0 $accept: problem . $end
+
+    $end  shift, and go to state 3
+
+
+State 2
+
+    1 problem: assignment_list . expr
+    2 assignment_list: assignment_list . assignment
+
+    IDENT  shift, and go to state 4
+    NUM    shift, and go to state 5
+
+    assignment  go to state 6
+    expr        go to state 7
+
+
+State 3
+
+    0 $accept: problem $end .
+
+    $default  accept
+
+
+State 4
+
+    4 assignment: IDENT . ASSIGN NUM
+    6 expr: IDENT .
+
+    ASSIGN  shift, and go to state 8
+
+    $default  reduce using rule 6 (expr)
+
+
+State 5
+
+    5 expr: NUM .
+
+    $default  reduce using rule 5 (expr)
+
+
+State 6
+
+    2 assignment_list: assignment_list assignment .
+
+    $default  reduce using rule 2 (assignment_list)
+
+
+State 7
+
+    1 problem: assignment_list expr .
+    7 expr: expr . ADD expr
+    8     | expr . SUB expr
+    9     | expr . MUL expr
+   10     | expr . DIV expr
+
+    ADD  shift, and go to state 9
+    SUB  shift, and go to state 10
+    MUL  shift, and go to state 11
+    DIV  shift, and go to state 12
+
+    $default  reduce using rule 1 (problem)
+
+
+State 8
+
+    4 assignment: IDENT ASSIGN . NUM
+
+    NUM  shift, and go to state 13
+
+
+State 9
+
+    7 expr: expr ADD . expr
+
+    IDENT  shift, and go to state 14
+    NUM    shift, and go to state 5
+
+    expr  go to state 15
+
+
+State 10
+
+    8 expr: expr SUB . expr
+
+    IDENT  shift, and go to state 14
+    NUM    shift, and go to state 5
+
+    expr  go to state 16
+
+
+State 11
+
+    9 expr: expr MUL . expr
+
+    IDENT  shift, and go to state 14
+    NUM    shift, and go to state 5
+
+    expr  go to state 17
+
+
+State 12
+
+   10 expr: expr DIV . expr
+
+    IDENT  shift, and go to state 14
+    NUM    shift, and go to state 5
+
+    expr  go to state 18
+
+
+State 13
+
+    4 assignment: IDENT ASSIGN NUM .
+
+    $default  reduce using rule 4 (assignment)
+
+
+State 14
+
+    6 expr: IDENT .
+
+    $default  reduce using rule 6 (expr)
+
+
+State 15
+
+    7 expr: expr . ADD expr
+    7     | expr ADD expr .
+    8     | expr . SUB expr
+    9     | expr . MUL expr
+   10     | expr . DIV expr
+
+    ADD  shift, and go to state 9
+    SUB  shift, and go to state 10
+    MUL  shift, and go to state 11
+    DIV  shift, and go to state 12
+
+    ADD       [reduce using rule 7 (expr)]
+    SUB       [reduce using rule 7 (expr)]
+    MUL       [reduce using rule 7 (expr)]
+    DIV       [reduce using rule 7 (expr)]
+    $default  reduce using rule 7 (expr)
+
+
+State 16
+
+    7 expr: expr . ADD expr
+    8     | expr . SUB expr
+    8     | expr SUB expr .
+    9     | expr . MUL expr
+   10     | expr . DIV expr
+
+    ADD  shift, and go to state 9
+    SUB  shift, and go to state 10
+    MUL  shift, and go to state 11
+    DIV  shift, and go to state 12
+
+    ADD       [reduce using rule 8 (expr)]
+    SUB       [reduce using rule 8 (expr)]
+    MUL       [reduce using rule 8 (expr)]
+    DIV       [reduce using rule 8 (expr)]
+    $default  reduce using rule 8 (expr)
+
+
+State 17
+
+    7 expr: expr . ADD expr
+    8     | expr . SUB expr
+    9     | expr . MUL expr
+    9     | expr MUL expr .
+   10     | expr . DIV expr
+
+    ADD  shift, and go to state 9
+    SUB  shift, and go to state 10
+    MUL  shift, and go to state 11
+    DIV  shift, and go to state 12
+
+    ADD       [reduce using rule 9 (expr)]
+    SUB       [reduce using rule 9 (expr)]
+    MUL       [reduce using rule 9 (expr)]
+    DIV       [reduce using rule 9 (expr)]
+    $default  reduce using rule 9 (expr)
+
+
+State 18
+
+    7 expr: expr . ADD expr
+    8     | expr . SUB expr
+    9     | expr . MUL expr
+   10     | expr . DIV expr
+   10     | expr DIV expr .
+
+    ADD  shift, and go to state 9
+    SUB  shift, and go to state 10
+    MUL  shift, and go to state 11
+    DIV  shift, and go to state 12
+
+    ADD       [reduce using rule 10 (expr)]
+    SUB       [reduce using rule 10 (expr)]
+    MUL       [reduce using rule 10 (expr)]
+    DIV       [reduce using rule 10 (expr)]
+    $default  reduce using rule 10 (expr)
