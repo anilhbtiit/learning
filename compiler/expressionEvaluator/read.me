@@ -1,0 +1,4 @@
+bison -d parser.y
+flex tokenizer.l
+g++ -g -o calc parser.tab.c lex.yy.c main.cxx -std=c++98 -DYYDEBUG
+
