@@ -1,0 +1,160 @@
+// #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <ranges>
+#include <concepts>
+
+// Concepts to constrain types
+template <typename T>
+concept Integral = std::is_integral_v<T>;
+
+template <typename T>
+concept FloatingPoint = std::is_floating_point_v<T>;
+
+// A function template constrained to integral types
+template <Integral T>
+T add(T a, T b) {
+    return a + b;
+}
+
+// A function template constrained to floating-point types
+template <FloatingPoint T>
+T multiply(T a, T b) {
+    return a * b;
+}
+
+// Spaceship operator for a custom struct
+struct Point {
+    int x, y;
+
+    // Defaulting the spaceship operator
+    auto operator<=>(const Point&) const = default;
+};
+
+typedef enum { sensor = 0, display, sound, other} typeEnum;
+
+class selection {
+  public:
+    void getDeviceObj();
+    virtual ~selection();
+  private:
+    int id;
+}
+
+class device {
+  public:
+    device (typeEnum type, int id, std::string detail) {
+      mId = id;
+      mType = type;
+      mDetails = detail;
+    }
+    virtual ~device();
+    void show_options();
+    void act_as_per_option();
+    void register_device();
+    int getId() const {return mId;}
+  private:
+    int mId;
+    typeEnum mType;
+    std::string mDetails;
+    statusEnum mStatus;
+    int mLocationId;
+}
+
+class sensor:public device {
+  public:
+    sensor(int id): device(sensor, id, "sensor") {}
+    virtual ~sensor();
+
+}
+
+class display:public device {
+  public:
+    display(int id): device(display, id, "display") {}
+    virtual ~display();
+
+}
+
+class sound:public device {
+  public:
+    sound(int id): device(sound, id, "sound") {}
+    virtual ~sound();
+
+}
+
+class other:public device {
+  public:
+    other(int id): device(other, id, "other") {}
+    virtual ~other();
+
+}
+
+
+class manager{
+  public:
+     manager() {};
+     allDevicesInfo() {};
+     register_a_device(device* d) {
+       deviceInfo.insert(d->getId(), d);
+     };
+  private:
+     std::unordered_map<int, device*> deviceInfo;
+}
+
+class app{
+  public:
+    void app() {
+    }
+    virtual ~app();
+    void fillDeviceData() {
+      manager* mg = new manager(); 
+    }
+    void menu1(){
+    }
+}
+
+void a00() {
+  int choice;
+  cout << "1. start the App \n0. exit\nEnter your choice ";
+  cin >> choice;
+  if(choice == 1) {
+    app* app = new app();
+    app->fillDeviceData();
+  } else {
+    cout << "exiting the app.";
+    return;
+  }
+  a01();
+}
+
+void a01() {
+
+    // Using concepts
+    int intResult = add(3, 4);
+    double floatResult = multiply(3.5, 2.0);
+
+    std::cout << "intResult: " << intResult << "\n";
+    std::cout << "floatResult: " << floatResult << "\n";
+
+    // Using ranges
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    std::ranges::for_each(vec, [](int& n) { n *= 2; });
+
+    for (const auto& n : vec) {
+        std::cout << n << " ";
+    }
+    std::cout << "\n";
+
+    // Using the spaceship operator
+    Point p1 = {1, 2};
+    Point p2 = {2, 3};
+
+    if (p1 < p2) {
+        std::cout << "p1 is less than p2\n";
+    } else {
+        std::cout << "p1 is not less than p2\n";
+    }
+
+    return 0;
+}
+
