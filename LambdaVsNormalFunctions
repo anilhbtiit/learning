@@ -1,0 +1,45 @@
+#include <iostream>
+#include <functional>
+#include <chrono>
+
+// Normal function
+int normal_func(int x) { return x * x; }
+
+int main() {
+    const int iterations = 100'000'000;
+    int result = 0;
+
+    // 1. Normal function call
+    auto start1 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < iterations; ++i) {
+        result += normal_func(i);
+    }
+    auto end1 = std::chrono::high_resolution_clock::now();
+
+    // 2. Direct lambda call (auto)
+    auto lambda_direct = [](int x) { return x * x; };
+    auto start2 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < iterations; ++i) {
+        result += lambda_direct(i);
+    }
+    auto end2 = std::chrono::high_resolution_clock::now();
+
+    // 3. std::function call (indirection)
+    std::function<int(int)> lambda_std = [](int x) { return x * x; };
+    auto start3 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < iterations; ++i) {
+        result += lambda_std(i);
+    }
+    auto end3 = std::chrono::high_resolution_clock::now();
+
+    // Print timings
+    auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(end1 - start1).count();
+    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(end2 - start2).count();
+    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(end3 - start3).count();
+
+    std::cout << "Normal function: " << duration1 << " ms\n";
+    std::cout << "Direct lambda:   " << duration2 << " ms\n";
+    std::cout << "std::function:   " << duration3 << " ms\n";
+
+    return 0;
+}
