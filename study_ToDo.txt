@@ -1,0 +1,34 @@
+-----------------------------------HDLE concepts:
+HDLE Callbacks mechanism for sync-up of Wrapper manager
+RTLC post synth naming syncup
+Flattener (HIE) -> intf with logic instance & module support
+BackRef DB -> visualizer
+Fileoffset -> Format preservation
+SubBundle dir cache -> cache implementation (DFS-> top down, bottom up, top down)
+Symbol DB -> frequently accessing and sharing of variables
+Trace algo -> for connectivity tracing
+-----------------------------------
+1.Graph traversals(directed,undirected)
+2.Trie
+3.AVL trees
+4.Prefix trees
+5.Sets
+6.STL(vector,set ordered/unordered)
+7.Complete example for tree & heap is: https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/
+Huffman coding algo(create & print)
+8.Heap (min, priority queue implementation, insertion, deletion,heapify)
+9.OS: scheduling,multithreading (locks, monitor,mutex,semaphores,shared memory,producer-consumer prob,philosopher dining problem)
+10.C++(design patterns, association, composition, inheritance,RAII)
+11.Embedded systems(book)
+12.Designs(snake-ladder,chess,parking lot)
+13. Web architecture (database doc,Twitter Facebook Yahoo apps,videos YouTube list,sacalability video, interviewbit questions)
+14. String algorithms(KMP,Moore etc)
+15. Greedy, divide and conquer algos examples
+16. Sorting algos(merge,quick,heap)
+17. Dynamic programming examples
+18. Projects (backref db, memory manager,apps(twitter,fb,Y!M,micro services)
+19. Open source libs(mqtt,XySsl,regex,windows,http/https)
+20. Discussion on web architectures
+------------------------------>
+Segment tree: https://cp-algorithms.com/data_structures/segment_tree.html#construction
+Number series: https://www.cuemath.com/algebra/arithmetic-and-geometric-progression/http://cleancoder.com/products
