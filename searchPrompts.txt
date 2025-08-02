@@ -14,3 +14,4 @@ Smart pointers:
 Lambda expressions:
 1. how lambda functions are treated internally in cpp library? are there real inline functions created for lambda expressions? say for example, in smart pointers, if we have customer deleter defined as lambda function then this is transferrable to other shared_ptr object along with deleter pointer and later deleter can be invoked from anywhere. so how does this lambda handling works?
 2. Lambda is copy-constructible. what does that mean? how it works internally? Can lambda expression declared within a class function be referenced from other class function? What is the scope of lambda expression? How and what all parameters are collected if a lambda is declared with [*](param) type?
+3. Lambdas can’t be compared unless explicitly defined (operator==), which matters in std::map. Explain in detail with example.
