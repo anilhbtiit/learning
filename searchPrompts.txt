@@ -1,0 +1,9 @@
+Prompts:
+
+Smart pointers:
+1. write complete extensive program for unique pointer, for shared pointer and weak pointer explaining creation, usage, deletion and move. Explain how to use weak pointer to avoind cycles? implement doubly linked list program using smart pointers.
+2. Write a program that maintains a doubly linked list using a Container class. Also, implement a SmartPointer class that lets you access Container elements using the * operator and lets you iterate through the Container using the ++ operator.
+3. how move-convert works to convert unique_ptr to shared_ptr? What the shared_ptr constructor does internally?
+4. write a program where custom deleter  is used to delete the unique pointer. also this program should be able to convert unique_pointer to shared pointer using std::move and custom deleter
+5. what is the lock() concept in smart pointers? is it internal function that is used for synchronization for shared resource. Explain with example
+6. When shared_ptr is assigned to weak_ptr, does its usage count increases? Does weak_ptr keeps shared pointer object directly or just the control block? What exactly is this control block class if its not the same class as class shared_ptr?
