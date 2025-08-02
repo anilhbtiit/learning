@@ -1,5 +1,8 @@
 Prompts:
 
+Keywords:
+1. auto, static, mutable, register
+
 Smart pointers:
 1. write complete extensive program for unique pointer, for shared pointer and weak pointer explaining creation, usage, deletion and move. Explain how to use weak pointer to avoind cycles? implement doubly linked list program using smart pointers.
 2. Write a program that maintains a doubly linked list using a Container class. Also, implement a SmartPointer class that lets you access Container elements using the * operator and lets you iterate through the Container using the ++ operator.
@@ -7,3 +10,7 @@ Smart pointers:
 4. write a program where custom deleter  is used to delete the unique pointer. also this program should be able to convert unique_pointer to shared pointer using std::move and custom deleter
 5. what is the lock() concept in smart pointers? is it internal function that is used for synchronization for shared resource. Explain with example
 6. When shared_ptr is assigned to weak_ptr, does its usage count increases? Does weak_ptr keeps shared pointer object directly or just the control block? What exactly is this control block class if its not the same class as class shared_ptr?
+
+Lambda expressions:
+1. how lambda functions are treated internally in cpp library? are there real inline functions created for lambda expressions? say for example, in smart pointers, if we have customer deleter defined as lambda function then this is transferrable to other shared_ptr object along with deleter pointer and later deleter can be invoked from anywhere. so how does this lambda handling works?
+2. Lambda is copy-constructible. what does that mean? how it works internally? Can lambda expression declared within a class function be referenced from other class function? What is the scope of lambda expression? How and what all parameters are collected if a lambda is declared with [*](param) type?
