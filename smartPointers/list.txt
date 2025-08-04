@@ -1,0 +1,4 @@
+1. Write doubly LL program using smart pointers.
+2. Write BST, Balanced BST and their traversals program using smart pointers.
+3. Write min/max heap, quick, merge sort, topo sort programs using smart pointers
+4. 
