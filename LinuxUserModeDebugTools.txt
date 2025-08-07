@@ -1,0 +1,17 @@
+•	Linux architecture
+•	Virtual address space
+•	procfs
+		To know everything about the running processes and information about kernel.
+•	Source Code Browsing 
+		Using hand (by find/grep)
+		Using ctags/cscope
+•	Static Code Analysis (lint/splint/coverity/flawfinder)
+•	Dynamic Code Analysis (memory debugging with valgrind/sanitizers)
+•	UserSpace RunTime Tracing tools
+		strace (system call trace)
+		ltrace (library function calls trace)
+•	Performance monitoring linux commands (vmstat / dstat)
+•	gdb
+•	CPU profiling 
+		perf
+		flame graph
