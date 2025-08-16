@@ -21,3 +21,6 @@ Lambda expressions:
 
 Exception handling:
 1. write an c++ example for exception handling around bad_function_call? how this type of exception occures? What is the mechanism behind exception handling in c++ library? Is it good to use exception handling everywhere? how to judiciously decide where to throw and catch exceptions and where not to?
+
+C++ containers:
+1. What are different type of C++ library containers? Detailed implementation of all the container classes like std::vector, std::map, std::set, std::list, std::unordered_map, std::unordered_set, std::dqueue etc. Explain their best use case and drawbacks? How iterators work on all these containers? Like in unordered_map, iterator will iterate in random fashion, can we make it repeatable or not? Give me details of implementation level Data structures being used to implement these containers.
