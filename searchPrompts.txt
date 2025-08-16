@@ -1,7 +1,7 @@
 Prompts:
 
 Keywords:
-1. auto, static, mutable, register
+1. static, const, final, auto, constexpr, static_assert, typeid, type_traits, decltype, forward, lvalue/rvalue, lreference/rreference, noexept, inline namespace, generalized attribute, mutable, register
 
 Smart pointers:
 1. write complete extensive program for unique pointer, for shared pointer and weak pointer explaining creation, usage, deletion and move. Explain how to use weak pointer to avoind cycles? implement doubly linked list program using smart pointers.
