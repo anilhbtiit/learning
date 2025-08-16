@@ -2,6 +2,8 @@ Prompts:
 
 Keywords:
 1. static, const, final, auto, constexpr, static_assert, typeid, type_traits, decltype, forward, lvalue/rvalue, lreference/rreference, noexept, inline namespace, generalized attribute, mutable, register
+Explain usage and need for below c++ keywords: static, const, final, auto, constexpr, static_assert, typeid, type_traits, decltype, forward, lvalue/rvalue, lreference/rreference, noexept, inline namespace, generalized attribute, mutable?
+Why these keywords are important for designing the application and how and where to use these? These keywords fulfill specific purpose in design, could you give me elaborative examples for each keyword usage?
 
 Smart pointers:
 1. write complete extensive program for unique pointer, for shared pointer and weak pointer explaining creation, usage, deletion and move. Explain how to use weak pointer to avoind cycles? implement doubly linked list program using smart pointers.
