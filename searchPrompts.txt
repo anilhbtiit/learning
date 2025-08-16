@@ -19,7 +19,7 @@ Lambda expressions:
 3. Lambdas can’t be compared unless explicitly defined (operator==), which matters in std::map. Explain in detail with example.
 4. explain c++ containers and their detailed working? how we take iterators in these containers? what are the must know facts about different containers which are prone to error in usage if not known.
 
-Exception handling:
+Exception handling: https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170
 1. write an c++ example for exception handling around bad_function_call? how this type of exception occures? What is the mechanism behind exception handling in c++ library? Is it good to use exception handling everywhere? how to judiciously decide where to throw and catch exceptions and where not to?
 
 C++ containers:
