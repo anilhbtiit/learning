@@ -24,3 +24,16 @@ Exception handling: https://learn.microsoft.com/en-us/cpp/cpp/errors-and-excepti
 
 C++ containers:
 1. What are different type of C++ library containers? Detailed implementation of all the container classes like std::vector, std::map, std::set, std::list, std::unordered_map, std::unordered_set, std::dqueue etc. Explain their best use case and drawbacks? How iterators work on all these containers? Like in unordered_map, iterator will iterate in random fashion, can we make it repeatable or not? Give me details of implementation level Data structures being used to implement these containers.
+
+Operator overloading:
+Rule of Thumb
+    Assignment-like or modifying ops → member.
+    Symmetric binary ops (+ - * / % == < >) → non-member.
+    Stream operators (<< >>) → non-member.
+string operator+(const string& lhs, const string& rhs);   // non-member
+string& operator+=(string& lhs, const string& rhs);       // member
+1. In above example, auto y = 10 + n1;   // works if Number has a converting constructor
+how 10 is converted using Number class constructor? How to define a number converting constructor?
+
+2. Why we should consider streaming overrator overloading with expetnal function? If we keep it part of class, would be easier to access object directly and 
+easy to put data in outpot stream which will be passed by reference to member function. Isn't that ok?
